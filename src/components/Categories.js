@@ -1,19 +1,23 @@
-import React from 'react';
+import '../styles/Categories.css'
 
-const Categories = ({ categories, category, setCategory }) => {
-  return (
-    <div>
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
-        <option value=""></option>
-        {categories.map((cat) => (
-          <option key={cat} value={cat}>
-            {cat}
-          </option>
-        ))}
-      </select>
-      <button onClick={() => setCategory('')}>Réinitialiser</button>
-    </div>
-  );
-};
+function Categories({ setActiveCategory, categories, activeCategory }) {
+	return (
+		<div className='lmj-categories'>
+			<select
+				value={activeCategory}
+				onChange={(e) => setActiveCategory(e.target.value)}
+				className='lmj-categories-select'
+			>
+				<option value=''>---</option>
+				{categories.map((cat) => (
+					<option key={cat} value={cat}>
+						{cat}
+					</option>
+				))}
+			</select>
+			<button onClick={() => setActiveCategory('')}>Réinitialiser</button>
+		</div>
+	)
+}
 
-export default Categories;
+export default Categories
